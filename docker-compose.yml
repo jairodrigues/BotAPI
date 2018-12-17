@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+    BotApi:
+        image: bot-api
+        build:
+            context: .
+        ports:
+            - '3000:3000'
+        depends_on:
+            - db
+    db:
+        image: 'mysql/mysql-server'
+        environment:
+            SA_PASSWORD: 'Acesso@2018'
+            ACCEPT_EULA: 'Y'
+            MSSQL_DATABASE: 'BotAPI'
+        ports:
+            - '1433:1433'
